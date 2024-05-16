@@ -4,9 +4,13 @@ session_start();
 
 // Vérifie si l'utilisateur est connecté, redirige vers la page d'accueil s'il l'est
 if (isset($_SESSION['utilisateur_connecte'])) {
-
     header("Location: accueil.php");
+    $mes = "";
     exit();
+} else {
+
+    $mes = '<p id="message" style="color:#ffff00;-webkit-animation: flash 1s linear;animation: flash 1s linear;"> <img  src="images/attention.png" width="24px" height="24px"> ' . $_SESSION['message'] . '! <img  src="images/attention.png" width="24px" height="24px"></p>';
+
 }
 ?>
 <!DOCTYPE html>
@@ -34,7 +38,7 @@ if (isset($_SESSION['utilisateur_connecte'])) {
 
             <!-- Affiche le message d'erreur si il y en a un -->
             <h1><?php
-            echo '<p id="message" style="color:#ffff00;-webkit-animation: flash 1s linear;animation: flash 1s linear;"> <img  src="images/attention.png" width="24px" height="24px"> ' . htmlspecialchars($_SESSION['message']) . '! <img  src="images/attention.png" width="24px" height="24px"></p>';
+            echo $mes;
 
 
             ?></h1>

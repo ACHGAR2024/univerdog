@@ -50,7 +50,8 @@ $resultat = $stmt->get_result();
 if ($resultat->num_rows > 0) {
     // echo "Un étudiant avec cet email existe déjà.<br>";
     // echo '<button onclick="window.history.back()">Retour</button>';
-    $_SESSION['message'] = "Un étudiant avec cet email existe déjà.";
+    $_SESSION['message'] = "cet email existe déjà.";
+    header('Location: ' . $_SERVER['HTTP_REFERER']);
 } else {
 
     // Requête d'insertion
