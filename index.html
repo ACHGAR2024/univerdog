@@ -1,24 +1,34 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ChatGPT Bot</title>
-    <link rel="stylesheet" href="css/styles_chatgpt.css">
+    <!--redirection vers la page d'accueil du site en 4 secondes-->
+    <meta http-equiv="refresh" content="4; url=http://localhost//univerdog/accueil.php">
+    <title>Intro Animée</title>
+    <link rel="stylesheet" href="css/style_intro.css">
 </head>
 
 <body>
-    <div class="chat-container">
-        <div id="chatbox">
-            <div id="chatlogs"></div>
+    <div class="container">
+        <!--div qui contient le logo et le titre du site-->
+        <div class="logo">
+            <img src="images/logochien.png" alt="Logo">
         </div>
-        <input type="text" id="userInput" placeholder="Entrez votre message..."
-            onkeypress="if(event.key === 'Enter') sendMessage()">
-        <button onclick="sendMessage()">Envoyer</button>
-
+        <div class="texte-presentation">
+            <!--div qui contient le logo et le texte d'introduction du site-->
+            <div class="logo-holder logo-anim">
+                <!--lien vers la page d'accueil du site-->
+                <a href="">
+                    <h3>UniverDog</h3>
+                    <p>Site web dédié aux chiens</p>
+                </a>
+            </div>
+        </div>
     </div>
-    <script src="js/script_chatgpt.js"></script>
+
+
 </body>
 
 </html>
