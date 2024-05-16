@@ -1,0 +1,156 @@
+/* Google Fonts */
+@import url("https://fonts.googleapis.com/css?family=Bangers|Cinzel:400,700,900|Lato:100,300,400,700,900|Lobster|Lora:400,700|Mansalva|Muli:200,300,400,600,700,800,900|Open+Sans:300,400,600,700,800|Oswald:200,300,400,500,600,700|Roboto:100,300,400,500,700,900&display=swap");
+
+/* Reset de la page */
+* {
+  margin: 0;
+  padding: 0;
+}
+
+/* Style du body */
+body {
+  font-family: sans-serif;
+  text-align: center;
+  background-color: #f0f0f0;
+  /* Définit l'image d'arrière-plan */
+  background-image: url("../images/arriere-plan-02.jpg");
+  /* Centre l'image */
+  background-position: center;
+}
+
+/* Conteneur central */
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+}
+
+/* Logo */
+.logo {
+  margin-bottom: 50px;
+}
+
+.logo img {
+  width: 200px;
+  height: auto;
+  animation: apparition-logo 3s ease-in-out;
+}
+
+/* Animation du logo */
+@keyframes apparition-logo {
+  from {
+    opacity: 0;
+    transform: scale(0.5);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* Texte d'introduction */
+.texte-presentation {
+  text-transform: uppercase;
+  font-weight: bold;
+}
+
+.texte-presentation h1 {
+  font-size: 3em;
+  animation: apparition-texte 1s ease-in-out;
+}
+
+/* Animation du texte d'introduction */
+@keyframes apparition-texte {
+  from {
+    transform: translateX(-100%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+/* Défilement du texte */
+.texte-presentation p {
+  font-size: 1.5em;
+  animation: defilement-texte 1s ease-in-out;
+  animation-delay: 0.5s;
+  margin-top: 10px;
+}
+
+/* Container des logos */
+.logo-container ul {
+  list-style: none;
+  display: inline-block;
+}
+
+/* Logos */
+.logo-container ul li {
+  width: 300px;
+  height: 120px;
+  background: #fff;
+  border-radius: 10px;
+  margin: 10px;
+  float: left;
+  padding: 20px;
+  box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.25);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Style des liens */
+.logo-container ul li a {
+  text-decoration: none !important;
+  display: inline-block;
+}
+
+/* Alignement centré */
+.logo-holder {
+  text-align: center;
+}
+
+/* Text Logo */
+.logo-anim h3 {
+  color: hsla(0, 0%, 97%, 0.919);
+  font-weight: 300;
+  font-size: 50px;
+  line-height: 0.6;
+  font-family: "Bangers", cursive;
+  letter-spacing: 5px;
+}
+
+/* Texte du logo */
+.logo-anim p {
+  font-size: 14px;
+  margin-left: 0;
+  color: hsl(0, 14%, 1%);
+  font-weight: 400;
+  text-transform: capitalize;
+  font-style: italic;
+  font-family: "Mansalva", cursive;
+  position: relative;
+}
+
+/* Bordure gauche */
+.logo-anim p:before {
+  position: absolute;
+  content: "";
+  width: 17px;
+  height: 12px;
+  background: hwb(59 10% 2%);
+  left: 0px;
+  top: 5px;
+}
+
+/* Bordure droite */
+.logo-anim p:after {
+  position: absolute;
+  content: "";
+  width: 17px;
+  height: 12px;
+  background: hwb(59 10% 2%);
+  right: 0px;
+  top: 5px;
+}
