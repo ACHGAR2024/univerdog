@@ -1,0 +1,215 @@
+/*
+ * Reset default styles
+ */
+
+/* Supprime les marges, les paddings et la boîte de la page */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Définit la police par défaut de la page */
+*,
+*::before,
+*::after {
+  font-family: cursive;
+}
+
+/* Couleur des liens */
+a,
+a:visited,
+a:hover,
+a:focus,
+a:active {
+  color: #ffffff;
+}
+
+/* Lien au moment du clic */
+
+/* Style du body */
+body {
+  /* Définit l'image d'arrière-plan */
+  background-image: url("../images/arriere-plan-02.jpg");
+  /* Centre l'image */
+  background-position: center;
+  /* Met le body en flex */
+  display: flex;
+  /* Centre le contenu de la page */
+  justify-content: center;
+  align-items: center;
+  /* Met la hauteur de la page à 100% de la hauteur de la fenêtre */
+  height: 100vh;
+}
+
+/* Conteneur de connexion */
+.login-container {
+  /* Couleur de fond */
+  /*background-color: #ffffff;*/
+  /* Marge */
+  padding: 20px;
+  /* arrondi des coins */
+  border-radius: 10px;
+  /* Ombre portée */
+  box-shadow: -2px -1px 15px 10px rgb(3 3 3 / 19%);
+}
+
+/* Conteneur de formulaire de connexion */
+.login-form {
+  /* Alignement du texte */
+  text-align: center;
+  /* Marge inférieure */
+  margin-bottom: 20px;
+  /* Opacité */
+  opacity: 0.8;
+  /* Police */
+  font-family: cursive;
+}
+
+/* Titre du formulaire */
+.login-form h1 {
+  /* Police */
+  font-size: 24px;
+  /* Marge inférieure */
+  margin-bottom: 10px;
+}
+
+/* Message d'erreur */
+.login-form p {
+  /* Couleur */
+  color: #f0f0f0;
+  /* Marge inférieure */
+  margin-bottom: 20px;
+}
+
+/* Champ de saisie */
+.login-form input {
+  /* Largeur */
+  width: 100%;
+  /* Marge */
+  padding: 10px;
+  /* Marge inférieure */
+  margin-bottom: 10px;
+  /* Bordure */
+  border: 1px solid #ddd;
+  /* arrondi des coins */
+  border-radius: 5px;
+}
+
+/* Bouton de connexion */
+.login-button {
+  /* Couleur de fond */
+  background-color: #272727;
+  /* Largeur */
+  width: 100%;
+  /* Couleur du texte */
+  color: #fff;
+  /* Bouton sans bordure */
+  border: none;
+  /* Marge */
+  padding: 10px 20px;
+  /* arrondi des coins */
+  border-radius: 5px;
+  /* Pointeur possible */
+  cursor: pointer;
+  /* Animation de couleur */
+  transition: background-color 0.3s ease;
+}
+
+/* Bouton de connexion au survol */
+.login-button:hover {
+  /* Couleur de fond */
+  background-color: #d8d9da;
+  /* Couleur du texte */
+  color: #272727;
+}
+
+/* Boutons de connexion via Google et Facebook */
+.social-buttons {
+  /* Marge supérieure */
+  margin-top: 20px;
+}
+
+/* Image des logos */
+.button-logo {
+  /* Redimensionne l'image */
+  background-size: cover;
+  /* Largeur */
+  width: 24px;
+  /* Hauteur */
+  height: 24px;
+  /* Marge */
+  margin-right: 10px;
+}
+
+/* Bouton de connexion via Google */
+.google-button,
+/* Bouton de connexion via Facebook */
+.facebook-button {
+  /* Couleur de fond */
+  background-color: #fff;
+  /* Bordure */
+  border: 1px solid #ddd;
+  /* Marge */
+  padding: 3px 20px 0px 20px;
+  /* arrondi des coins */
+  border-radius: 5px;
+  /* Pointeur possible */
+  cursor: pointer;
+  /* Animation de couleur */
+  transition: background-color 0.3s ease;
+}
+
+/* Bouton de connexion via Google au survol */
+.google-button:hover,
+/* Bouton de connexion via Facebook au survol */
+.facebook-button:hover {
+  /* Couleur de fond */
+  background-color: #f0f0f0;
+}
+
+/* Lien vers l'inscription */
+.login-form a {
+  /* Pas de souligné */
+  text-decoration: none;
+}
+
+/* Lien vers l'inscription au survol */
+.login-form a:hover {
+  /* Souligné */
+  text-decoration: underline;
+}
+
+/* Positionnement du logo */
+.logo {
+  /* Positionnement absolu */
+  position: absolute;
+  /* Marge supérieure */
+  top: 20px;
+}
+
+/* Texte du mot de passe */
+.text-password {
+  /* Police */
+  font-size: 12px;
+}
+
+/* Lien vers l'inscription */
+.compte {
+  /* Couleur */
+  color: #f0f0f0;
+  /* Police */
+  font-size: 12px;
+  /* Marge supérieure */
+  margin-top: 15px;
+}
+
+/* Message d'erreur */
+#message {
+  /* Couleur */
+  color: #e81414;
+  /* Police */
+  font-size: 12px;
+  /* Marge supérieure */
+  margin-top: 15px;
+}

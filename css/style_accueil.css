@@ -1,0 +1,108 @@
+/* Style du bouton de déconnexion */
+.buttonDeconnexion {
+  background-color: hsla(0, 0%, 15%, 0.692);
+  border: none;
+  color: #fff;
+  padding: 5px 10px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 12px;
+  margin: 4px 2px;
+  transition: 0.4s;
+  cursor: pointer;
+  border-radius: 10px;
+}
+
+.buttonDeconnexion:hover {
+  background-color: hwb(355 26% 5% / 0.765);
+  color: hwb(0 100% 0% / 0.977);
+  transition: 0.8s;
+}
+
+.deconnexion {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+}
+
+.menu_accueil_images {
+  width: 600px;
+  padding: 20px;
+  margin-top: 250px;
+  margin-bottom: 20px;
+  border-radius: 10px;
+  box-shadow: -2px -1px 15px 10px rgb(3 3 3 / 19%);
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.box_carte_images {
+  width: 150px;
+  height: 150px;
+  margin: 10px;
+  border-radius: 10px;
+  box-shadow: -2px -1px 15px 10px rgb(3 3 3 / 19%);
+  background-size: cover;
+  background-position: center;
+}
+
+.box_carte_images p {
+  background-color: #00000099;
+  color: #fff;
+  font-size: 16px;
+  text-align: center;
+  margin-top: 75px;
+}
+
+.box1 {
+  background-image: url("../images/menu/box_01.jpeg");
+}
+.box2 {
+  background-image: url("../images/menu/box_02.jpeg");
+}
+.box3 {
+  background-image: url("../images/menu/box_03.jpeg");
+}
+.box4 {
+  background-image: url("../images/menu/box_04.jpeg");
+}
+.box5 {
+  background-image: url("../images/menu/box_05.jpeg");
+}
+.box6 {
+  background-image: url("../images/menu/box_06.jpeg");
+}
+.box7 {
+  background-image: url("../images/menu/box_07.jpeg");
+}
+.box8 {
+  background-image: url("../images/menu/box_08.jpeg");
+}
+.box9 {
+  background-image: url("../images/menu/box_09.jpeg");
+}
+
+.box_carte_images:hover {
+  cursor: pointer;
+  transform: scale(1.1);
+  transition: 0.5s;
+}
+
+@media screen and (max-width: 600px) {
+  .menu_accueil_images {
+    margin-top: 0px;
+    height: 250px;
+    box-shadow: -2px -1px 15px 10px rgba(3, 3, 3, 0);
+  }
+  .box_carte_images {
+    width: 150px;
+    height: 150px;
+    margin: 7px;
+  }
+  .box_carte_images p {
+    margin-top: 100px;
+    font-size: 13px;
+  }
+}

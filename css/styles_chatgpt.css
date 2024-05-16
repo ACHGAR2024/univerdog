@@ -1,0 +1,109 @@
+body {
+  font-family: cursive;
+  font-size: 12px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #f0f0f0;
+  color: hwb(0 15% 85%);
+  margin: 0;
+}
+
+.chat-container {
+  width: 300px;
+  background: hsla(0, 0%, 54%, 0.839);
+  box-shadow: 0 0 10px #4848485b;
+  border-radius: 10px;
+  overflow: hidden;
+  background-color: #f0f0f0;
+}
+
+#chatbox {
+  max-height: 400px;
+  overflow-y: auto;
+  padding: 20px;
+  background-color: #bab9b9ba;
+}
+
+#chatlogs {
+  display: flex;
+  flex-direction: column;
+}
+
+.message {
+  margin: 10px 0;
+  padding: 10px;
+  border-radius: 10px;
+  background-color: hsla(211, 100%, 50%, 0.504);
+}
+/* Styles pour les messages de l'utilisateur */
+.user.message {
+  align-self: flex-end;
+  background-color: #cce5ff; /* Changez cette couleur selon vos préférences */
+  padding: 10px;
+  border-radius: 10px;
+}
+
+/* Styles pour les messages du bot */
+.bot.message {
+  align-self: flex-start;
+  background-color: #f8d7da;
+  padding: 10px;
+  border-radius: 10px;
+}
+.bot .message {
+  color: brown;
+  margin: 10px 0;
+  padding: 10px;
+  border-radius: 10px;
+  background-color: hsl(3, 100%, 50%);
+}
+
+#userInput {
+  width: 100%;
+  padding: 10px;
+  border: none;
+  border-top: 1px solid #ccc;
+  margin: 10px 0;
+  color: #f0f0f0;
+  padding: 10px;
+
+  background-color: hwb(212 1% 92%);
+}
+
+button {
+  width: 100%;
+
+  padding: 10px;
+  border: none;
+  background: #007bff;
+  color: #fff;
+  cursor: pointer;
+}
+button:hover {
+  background: #0069d9;
+}
+/* Styles pour la liste non ordonnée */
+ul {
+  direction: rtl;
+  /* Ajoutez d'autres styles selon vos besoins */
+}
+
+ul li {
+  /* Styles pour les éléments de la liste non ordonnée */
+  list-style-type: none;
+  /* Ajoutez d'autres styles selon vos besoins */
+}
+
+/* Styles pour la liste ordonnée */
+ol {
+  direction: rtl;
+  /* Ajoutez d'autres styles selon vos besoins */
+}
+
+ol li {
+  /* Styles pour les éléments de la liste ordonnée */
+  list-style-type: none;
+  /* Ajoutez d'autres styles selon vos besoins */
+}

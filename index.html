@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ChatGPT Bot</title>
+    <link rel="stylesheet" href="css/styles_chatgpt.css">
+</head>
+
+<body>
+    <div class="chat-container">
+        <div id="chatbox">
+            <div id="chatlogs"></div>
+        </div>
+        <input type="text" id="userInput" placeholder="Entrez votre message..."
+            onkeypress="if(event.key === 'Enter') sendMessage()">
+        <button onclick="sendMessage()">Envoyer</button>
+
+    </div>
+    <script src="js/script_chatgpt.js"></script>
+</body>
+
+</html>
