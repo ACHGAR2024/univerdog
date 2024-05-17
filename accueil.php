@@ -75,7 +75,7 @@ if (!isset($_SESSION['utilisateur_connecte'])) {
             <p class="texte">Voyages et destinations pour Chiens</p>
 
         </div>
-        <div class="box_carte_images box9" onclick="window.location.href='index.html';">
+        <div class="box_carte_images box9" onclick="window.location.href='chatgpt.html';">
 
             <p class="texte">Conseil en Intelligence Artificielle</p>
 

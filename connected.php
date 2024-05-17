@@ -34,13 +34,15 @@ if (isset($_SESSION['utilisateur_connecte'])) {
             <br>
             <br>
             <!-- Titre de la page -->
-            <h1>Bienvenue</h1>
+            <h1></h1>
+            <br>
+            <br>
             <!-- Affiche un message d'erreur si il y en a un -->
             <?php
             if (isset($_GET["message"])) {
                 echo '<p id="message" style="color:#ffff00;-webkit-animation: flash 1s linear;animation: flash 1s linear;"> <img  src="images/attention.png" width="24px" height="24px"> ' . htmlspecialchars($_GET["message"]) . '! <img  src="images/attention.png" width="24px" height="24px"></p>';
             } else {
-                echo '<p>Veuillez vous connecter à votre compte.</p>';
+                echo '<p style="color:#272727;-webkit-animation: flash 1s linear;animation: flash 1s linear;">Veuillez vous connecter à votre compte.</p>';
             }
 
             ?>

@@ -1,16 +1,17 @@
 <?php
 // Démarre une session
 session_start();
-
+$mes = "<h1>veuillez vous inscrire</h1>";
 // Vérifie si l'utilisateur est connecté, redirige vers la page d'accueil s'il l'est
 if (isset($_SESSION['utilisateur_connecte'])) {
     header("Location: accueil.php");
-    $mes = "";
+    $mes = '<h1 style ="font-size: 14px;margin-bottom: 10px;            
+    color: #ffd761;">veuillez vous inscrire</h1>';
     exit();
 } else {
-
-    $mes = '<p id="message" style="color:#ffff00;-webkit-animation: flash 1s linear;animation: flash 1s linear;"> <img  src="images/attention.png" width="24px" height="24px"> ' . $_SESSION['message'] . '! <img  src="images/attention.png" width="24px" height="24px"></p>';
-
+    if (isset($_SESSION["message"])) {
+        $mes = $_SESSION['message'];
+    }
 }
 ?>
 <!DOCTYPE html>
@@ -31,23 +32,28 @@ if (isset($_SESSION['utilisateur_connecte'])) {
 
 
 
-        <div class="login-form" style="max-width: 400px;">
+        <div class="login-form" style="max-width: 400px;padding-top: 100px;">
 
             <!-- image du logo -->
+            <br>
             <p><img src="images/logochien.png" alt="logo chien" width="200px" style="margin-top: 300px;"></p>
 
             <!-- Affiche le message d'erreur si il y en a un -->
-            <h1><?php
-            echo $mes;
+            <?php
+            if (isset($mes)) {
+                echo $mes;
+            } else {
+                echo '<p style="color:#272727;font-size: 14px;-webkit-animation: flash 1s linear;animation: flash 1s linear;">Veuillez vous s’inscrire.</p>';
+            }
 
 
-            ?></h1>
-
+            ?>
+            <br>
             <!-- Formulaire d'inscription -->
             <form action="traitement.php" method="POST" onsubmit="return verifSaisie()">
 
                 <!-- Nom du chien -->
-                <input type="text" id="nom" name="nom" placeholder="Saisissez le nom de chien" required
+                <input type="text" id="nom_chien" name="nom_chien" placeholder="Saisissez le nom de chien" required
                     pattern="^[a-zA-ZàâäèéêëîïôœùûüÿçÀÂÄÈÉÊËÎÏÔŒÙÛÜŸÇ\s-]+$"
                     title="Le nom ne doit contenir que des lettres" style="margin-bottom: 10px;">
                 <!-- Affiche un message d'erreur si le nom n'est pas valide -->
@@ -118,6 +124,12 @@ if (isset($_SESSION['utilisateur_connecte'])) {
                 <!-- Champs de saisie pour l'envoi du formulaire -->
                 <br>
                 <hr>
+                <br>
+                <!-- Nom du chien -->
+                <input type="text" id="nom_proprietaire" name="nom_proprietaire" placeholder="Saisissez votre nom"
+                    required pattern="^[a-zA-ZàâäèéêëîïôœùûüÿçÀÂÄÈÉÊËÎÏÔŒÙÛÜŸÇ\s-]+$"
+                    title="Le nom ne doit contenir que des lettres" style="margin-bottom: 10px;">
+                <!-- Affiche un message d'erreur si le nom n'est pas valide -->
                 <br>
                 <!-- Email de l'utilisateur -->
                 <input type="email" id="email" name="email" placeholder="Saisissez votre email" required
@@ -208,3 +220,6 @@ if (isset($_SESSION['utilisateur_connecte'])) {
 </body>
 
 </html>
+<?php
+
+?>

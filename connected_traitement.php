@@ -14,13 +14,12 @@ if (isset($_SESSION['utilisateur_connecte'])) {
     exit();
 }
 
-// Connexion à la base de données
-$serveur = "localhost"; // Remplacez par votre serveur MySQL
-$utilisateur = "root"; // Remplacez par votre nom d'utilisateur MySQL
-$mot_de_passe = ""; // Remplacez par votre mot de passe MySQL
-$base_de_donnees = "ma_base_de_donnees"; // Remplacez par le nom de votre base de données
+// Inclure le fichier de connexion à la base de données
+require_once ('db_connect.php');
 
-$connexion = new mysqli($serveur, $utilisateur, $mot_de_passe, $base_de_donnees);
+// Obtenir la connexion à la base de données
+$connexion = connexion_bdd();
+
 
 if ($connexion->connect_error) {
     die("La connexion a échoué : " . $connexion->connect_error);
@@ -37,7 +36,7 @@ $mot_de_passe_hash = hash('sha256', $mot_de_passe_saisi);
 
 
 // Vérification du mot de passe
-$requete = "SELECT mot_de_passe FROM chiens WHERE email =?";
+$requete = "SELECT mot_de_passe FROM proprietaire WHERE email =?";
 $resultat = $connexion->prepare($requete);
 $resultat->bind_param("s", $email);
 $resultat->execute();

@@ -64,14 +64,17 @@ body {
   opacity: 0.8;
   /* Police */
   font-family: cursive;
+  font-size: 14px;
 }
 
 /* Titre du formulaire */
 .login-form h1 {
   /* Police */
-  font-size: 24px;
+  font-size: 14px;
   /* Marge inférieure */
   margin-bottom: 10px;
+  /* Couleur */
+  color: #ffd761;
 }
 
 /* Message d'erreur */

@@ -6,14 +6,12 @@ ini_set('default_charset', 'UTF-8');
 // Démarrage de la session
 session_start();
 
-// Connexion à la base de données
-$serveur = "localhost"; // Remplacez par votre serveur MySQL
-$utilisateur = "root"; // Remplacez par votre nom d'utilisateur MySQL
-$mot_de_passe = ""; // Remplacez par votre mot de passe MySQL
-$base_de_donnees = "ma_base_de_donnees"; // Remplacez par le nom de votre base de données
+// Inclure le fichier de connexion à la base de données
+require_once ('db_connect.php');
 
-// Connexion à la base de données
-$connexion = new mysqli($serveur, $utilisateur, $mot_de_passe, $base_de_donnees);
+// Obtenir la connexion à la base de données
+$connexion = connexion_bdd();
+
 
 // Vérification de la connexion
 if ($connexion->connect_error) {
@@ -22,17 +20,20 @@ if ($connexion->connect_error) {
 
 
 // Récupération des données du formulaire
-$nom = $_POST['nom'];
-$email = $_POST['email'];
-$date_naissance = $_POST['date'];
-$telephone = $_POST['tel'];
+$nom_chien = $_POST['nom_chien'];
+$date_naissance_chien = $_POST['date'];
 $race = $_POST['race'];
+$message = isset($_POST['message']) ? $_POST['message'] : "";
+
+$nom_proprietaire = $_POST['nom_proprietaire'];
+$email = $_POST['email'];
 
 // Vérification de la présence des champs facultatifs
 $mot_de_passe = isset($_POST['password']) ? $_POST['password'] : "";
-$message = isset($_POST['message']) ? $_POST['message'] : "";
-$accepte_reglement = isset($_POST['check']);
 
+
+$accepte_reglement = isset($_POST['check']);
+$telephone = $_POST['tel'];
 
 // Hashage complexedu mot de passe
 $mot_de_passe_hash = hash('sha256', $mot_de_passe);
@@ -40,7 +41,7 @@ $mot_de_passe_hash = hash('sha256', $mot_de_passe);
 
 
 // Vérification de l'existence d'un étudiant avec le même email
-$requete = "SELECT * FROM chiens WHERE email =?";
+$requete = "SELECT * FROM proprietaire WHERE email =?";
 $stmt = $connexion->prepare($requete);
 $stmt->bind_param("s", $email);
 $stmt->execute();
@@ -48,29 +49,52 @@ $resultat = $stmt->get_result();
 
 // Affichage d'un message d'erreur si l'utilisateur existe déjà
 if ($resultat->num_rows > 0) {
-    // echo "Un étudiant avec cet email existe déjà.<br>";
+    echo "Un proprietaire avec cet email existe déjà.<br>";
     // echo '<button onclick="window.history.back()">Retour</button>';
     $_SESSION['message'] = "cet email existe déjà.";
     header('Location: ' . $_SERVER['HTTP_REFERER']);
 } else {
+    // Début de la transaction
+    $connexion->begin_transaction();
 
-    // Requête d'insertion
-    $requete = "INSERT INTO chiens (nom, email, date_naissance, telephone, race, mot_de_passe, message, accepte_reglement)
-                    VALUES (?,?,?,?,?,?,?,?)";
-    $stmt = $connexion->prepare($requete);
-    $stmt->bind_param("sssssssi", $nom, $email, $date_naissance, $telephone, $race, $mot_de_passe_hash, $message, $accepte_reglement);
+    // Requête d'insertion dans la table PROPRIETAIRE
+    $requete_proprietaire = "INSERT INTO proprietaire (nom, email, mot_de_passe, telephone) VALUES (?,?,?,?)";
+    $stmt = $connexion->prepare($requete_proprietaire);
+    $stmt->bind_param("ssss", $nom_proprietaire, $email, $mot_de_passe_hash, $telephone);
 
     if ($stmt->execute()) {
-        $_SESSION['message'] = "Votre inscription a bien été prise en compte. Merci de votre intérêt pour notre site.";
-        header('Location: connected.php');
+        // Récupération de l'ID du propriétaire nouvellement créé
+        $id_proprietaire = $stmt->insert_id;
+
+        // Requête d'insertion dans la table CHIENS
+        $requete_chien = "INSERT INTO chiens (nom, date_naissance, race, information, id_proprietaire) VALUES (?,?,?,?,?)";
+        $stmt = $connexion->prepare($requete_chien);
+        $stmt->bind_param("ssssi", $nom_chien, $date_naissance_chien, $race, $message, $id_proprietaire);
+
+        if ($stmt->execute()) {
+            // Commit de la transaction si les deux insertions réussissent
+            $connexion->commit();
+            $_SESSION['message'] = '<h1 style ="font-size: 14px;margin-bottom: 10px;            
+            color: #ffd761;">Votre inscription a bien été prise en compte. Merci de votre intérêt pour notre site.</h1>';
+            header('Location: connected.php');
+            exit();
+        } else {
+            // Rollback de la transaction en cas d'échec de l'insertion dans CHIENS
+            $connexion->rollback();
+            $_SESSION['message'] = "Erreur lors de l'insertion des données du chien : " . $stmt->error;
+            header('Location: ' . $_SERVER['HTTP_REFERER']);
+            exit();
+        }
     } else {
-        // echo "Erreur lors de l'insertion des données : " . $stmt->error;
-        // echo '<br><button onclick="window.history.back()">Retour</button>';
-        $_SESSION['message'] = "Erreur lors de l'insertion des données : " . $stmt->error;
+        // Rollback de la transaction en cas d'échec de l'insertion dans PROPRIETAIRE
+        $connexion->rollback();
+        $_SESSION['message'] = "Erreur lors de l'insertion des données du propriétaire : " . $stmt->error;
+        header('Location: ' . $_SERVER['HTTP_REFERER']);
+        exit();
     }
 }
+$_SESSION['message'] = '<p id="message" style="color:#ffff00;-webkit-animation: flash 1s linear;animation: flash 1s linear;"> <img  src="images/attention.png" width="24px" height="24px"> ' . $_SESSION['message'] . '! <img  src="images/attention.png" width="24px" height="24px"></p>';
 
-
-$stmt->close();
+// Fermeture de la connexion à la base de données
 $connexion->close();
-
+?>
