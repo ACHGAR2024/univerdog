@@ -1,7 +1,7 @@
 
         async function getChatbotResponse(userInput) {
             const url = 'https://api-inference.huggingface.co/models/Qiliang/bart-large-cnn-samsum-ChatGPT_v3'; // URL de l'API Hugging Face
-            const apiKey = 'Bearer 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'; // Remplacez 'xxxxxx' par votre clé API Hugging Face
+            const apiKey = 'Bearer xxxxxx'; // Remplacez 'xxxxxx' par votre clé API Hugging Face
 
             const headers = {
                 'Authorization': apiKey,
