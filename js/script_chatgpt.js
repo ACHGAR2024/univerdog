@@ -2,6 +2,8 @@
         async function getChatbotResponse(userInput) {
             const url = 'https://api-inference.huggingface.co/models/meta-llama/Meta-Llama-3-8B-Instruct';
             const apiKey = 'Bearer xxxxxxxxxxxxx'; // Remplacez 'xxxxxx' par votre clé API Hugging Face
+            const url = 'https://api-inference.huggingface.co/models/Qiliang/bart-large-cnn-samsum-ChatGPT_v3'; // URL de l'API Hugging Face
+            const apiKey = 'Bearer xxxxxx'; // Remplacez 'xxxxxx' par votre clé API Hugging Face
 
             const headers = {
                 'Authorization': apiKey,
