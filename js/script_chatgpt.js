@@ -1,6 +1,6 @@
 
         async function getChatbotResponse(userInput) {
-            const url = 'https://api-inference.huggingface.co/models/Qiliang/bart-large-cnn-samsum-ChatGPT_v3'; // URL de l'API Hugging Face
+            const url = 'https://api-inference.huggingface.co/models/meta-llama/Meta-Llama-3-8B-Instruct';
             const apiKey = 'Bearer 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'; // Remplacez 'xxxxxx' par votre clé API Hugging Face
 
             const headers = {
@@ -9,7 +9,10 @@
             };
 
             const body = JSON.stringify({
-                'inputs': userInput
+                   inputs: `Je suis votre assistant pour toutes vos questions concernant les chiens. : ${userInput}`
+ 
+				
+      
             });
 
             try {
@@ -49,4 +52,4 @@
             document.getElementById('chatlogs').appendChild(messageContainer);
             messageContainer.scrollIntoView();
         }
-
+   
